@@ -1,4 +1,4 @@
-import { formatPhoneNumberForAuthentication, isValidPhoneNumber, prettyFormatPhoneNumber } from './formatPhoneNumber'
+import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber } from '../formatPhoneNumber'
 
 describe('test phoneNumber module', () => {
   it('should validate phone numbers', () => {
@@ -44,29 +44,29 @@ describe('test phoneNumber module', () => {
 
   it('should format for auth', () => {
     // norwegian
-    expect(formatPhoneNumberForAuthentication('94099781')).toBe('+4794099781')
-    expect(formatPhoneNumberForAuthentication('940-99-781')).toBe('+4794099781')
-    expect(formatPhoneNumberForAuthentication('4794099781')).toBe('+4794099781')
-    expect(formatPhoneNumberForAuthentication('47 940-99-781')).toBe('+4794099781')
-    expect(formatPhoneNumberForAuthentication('004794099781')).toBe('+4794099781')
-    expect(formatPhoneNumberForAuthentication('00 47 940 99 781')).toBe('+4794099781')
-    expect(formatPhoneNumberForAuthentication('+4794099781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('94099781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('940-99-781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('4794099781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('47 940-99-781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('004794099781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('00 47 940 99 781')).toBe('+4794099781')
+    expect(shortFormatPhoneNumber('+4794099781')).toBe('+4794099781')
 
-    expect(formatPhoneNumberForAuthentication('+4747282690')).toBe('+4747282690')
-    expect(formatPhoneNumberForAuthentication('004747282690')).toBe('+4747282690')
-    expect(formatPhoneNumberForAuthentication('47282690')).toBe('+4747282690')
+    expect(shortFormatPhoneNumber('+4747282690')).toBe('+4747282690')
+    expect(shortFormatPhoneNumber('004747282690')).toBe('+4747282690')
+    expect(shortFormatPhoneNumber('47282690')).toBe('+4747282690')
 
     // international
-    expect(formatPhoneNumberForAuthentication('+48 781 296 647')).toBe('+48781296647')
-    expect(formatPhoneNumberForAuthentication('0048 781-296-647')).toBe('+48781296647')
-    expect(formatPhoneNumberForAuthentication('+290 1234')).toBe('+2901234')
-    expect(formatPhoneNumberForAuthentication('00290 1234')).toBe('+2901234')
+    expect(shortFormatPhoneNumber('+48 781 296 647')).toBe('+48781296647')
+    expect(shortFormatPhoneNumber('0048 781-296-647')).toBe('+48781296647')
+    expect(shortFormatPhoneNumber('+290 1234')).toBe('+2901234')
+    expect(shortFormatPhoneNumber('00290 1234')).toBe('+2901234')
 
     // not valid
-    expect(formatPhoneNumberForAuthentication('479409')).toBe(undefined)
+    expect(shortFormatPhoneNumber('479409')).toBe(undefined)
 
     // Back and forth
-    expect(formatPhoneNumberForAuthentication(prettyFormatPhoneNumber('+4794099781'))).toBe('+4794099781')
+    expect(shortFormatPhoneNumber(prettyFormatPhoneNumber('+4794099781'))).toBe('+4794099781')
   })
 
   it('should pretty format Norwegian number', () => {

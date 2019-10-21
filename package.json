@@ -1,19 +1,29 @@
 {
-  "name": "styrerommet-roles",
+  "name": "styrerommet-utils",
   "version": "0.1.0",
-  "description": "Roles used by the Styrerommet application(s).",
+  "description": "Utilities used by the Styrerommet and Vibbo application families.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "prepush": "npm run format:check && npm run test && (cd login-app && npm run prepush)",
+    "format": "prettier --write 'src/**/*.js'",
+    "format:check": "prettier -l 'src/**/*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-obos/styrerommet-roles.git"
+    "url": "git+https://github.com/code-obos/styrerommet-utils.git"
   },
   "author": "OBOS",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/code-obos/styrerommet-roles/issues"
+    "url": "https://github.com/code-obos/styrerommet-utils/issues"
   },
-  "homepage": "https://github.com/code-obos/styrerommet-roles#readme"
+  "homepage": "https://github.com/code-obos/styrerommet-utils#readme",
+  "devDependencies": {
+    "@types/jest": "24.0.19",
+    "jest": "24.9.0",
+    "ts-jest": "24.1.0",
+    "typescript": "3.7.0-beta"
+  }
 }

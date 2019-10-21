@@ -1,0 +1,19 @@
+{
+  "name": "styrerommet-roles",
+  "version": "0.1.0",
+  "description": "Roles used by the Styrerommet application(s).",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-obos/styrerommet-roles.git"
+  },
+  "author": "OBOS",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/code-obos/styrerommet-roles/issues"
+  },
+  "homepage": "https://github.com/code-obos/styrerommet-roles#readme"
+}

@@ -1,6 +1,6 @@
 {
   "name": "styrerommet-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utilities used by the Styrerommet and Vibbo application families.",
   "main": "index.js",
   "scripts": {

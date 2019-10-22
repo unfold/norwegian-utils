@@ -1,2 +1,2 @@
-console.error('styrerommet-utils: DO NOT IMPORT ENTIRE PACKAGE\nPrefer to only import necessary subdirectories to keep bundle size low.')
+console.error('styrerommet-utils: Do not import default from this package.')
 export default {}

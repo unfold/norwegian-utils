@@ -1,4 +1,4 @@
-import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber } from '../formatPhoneNumber'
+import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber } from './'
 
 describe('test phoneNumber module', () => {
   it('should validate phone numbers', () => {

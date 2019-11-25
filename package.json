@@ -1,7 +1,7 @@
 {
-  "name": "styrerommet-utils",
-  "version": "0.1.2",
-  "description": "Utilities used by the Styrerommet and Vibbo application families.",
+  "name": "norwegian-utils",
+  "version": "0.1.0",
+  "description": "Utilities used in our Norwegian applications.",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
@@ -13,18 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-obos/styrerommet-utils.git"
+    "url": "git+https://github.com/unfold/norwegian-utils.git"
   },
   "author": "OBOS",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/code-obos/styrerommet-utils/issues"
+    "url": "https://github.com/unfold/norwegian-utils/issues"
   },
-  "homepage": "https://github.com/code-obos/styrerommet-utils#readme",
+  "homepage": "https://github.com/unfold/norwegian-utils#readme",
   "devDependencies": {
     "@types/jest": "24.0.19",
     "jest": "24.9.0",
     "ts-jest": "24.1.0",
-    "typescript": "3.7.0-beta"
+    "typescript": "3.7.2"
   }
 }

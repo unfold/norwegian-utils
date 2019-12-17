@@ -9,3 +9,4 @@ node_modules
 **/*.ts
 **/*.test.js
 !**/*.d.ts
+**/*.test.d.ts

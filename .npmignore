@@ -1,4 +1,4 @@
-.git/*
+.git/**/*
 .env
 .env.*
 .idea/*

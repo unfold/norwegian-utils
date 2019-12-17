@@ -5,4 +5,7 @@
 node_modules
 .DS_Store
 
+# Include only .js and .d.ts files, not tests
 **/*.ts
+**/*.test.js
+!**/*.d.ts

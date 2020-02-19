@@ -12,7 +12,7 @@ jest.config.js
 .prettierrc
 
 # Include only .js and .d.ts files, not tests
-**/*.ts
+!**/*.ts
 **/*.test.js
 !**/*.d.ts
 **/*.test.d.ts

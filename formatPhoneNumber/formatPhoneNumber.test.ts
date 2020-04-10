@@ -1,4 +1,4 @@
-import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber } from './'
+import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber, isNorwegianPhoneNumber } from './'
 
 describe('test phoneNumber module', () => {
   it('should validate phone numbers', () => {
@@ -42,7 +42,7 @@ describe('test phoneNumber module', () => {
     expect(isValidPhoneNumber('00 48 12345678901234')).toBe(false) // too long
   })
 
-  it('should format for auth', () => {
+  it('should format for database or comparison', () => {
     // norwegian
     expect(shortFormatPhoneNumber('94099781')).toBe('+4794099781')
     expect(shortFormatPhoneNumber('940-99-781')).toBe('+4794099781')
@@ -63,7 +63,7 @@ describe('test phoneNumber module', () => {
     expect(shortFormatPhoneNumber('00290 1234')).toBe('+2901234')
 
     // not valid
-    expect(shortFormatPhoneNumber('479409')).toBe(undefined)
+    expect(shortFormatPhoneNumber('479409')).toBe('479409')
 
     // Back and forth
     expect(shortFormatPhoneNumber(prettyFormatPhoneNumber('+4794099781'))).toBe('+4794099781')
@@ -85,6 +85,28 @@ describe('test phoneNumber module', () => {
 
     // not valid Norwegian number, no formatting applied
     expect(prettyFormatPhoneNumber('4794099')).toBe('4794099')
+  })
+
+  it('should validate norwegian numbers', () => {
+    // norwegian
+    expect(isNorwegianPhoneNumber('94099781')).toBe(true)
+    expect(isNorwegianPhoneNumber('940-99-781')).toBe(true)
+    expect(isNorwegianPhoneNumber('4794099781')).toBe(true)
+    expect(isNorwegianPhoneNumber('47 940-99-781')).toBe(true)
+    expect(isNorwegianPhoneNumber('004794099781')).toBe(true)
+    expect(isNorwegianPhoneNumber('+48 781 296 647')).toBe(false)
+    expect(isNorwegianPhoneNumber('0048 781-296-647')).toBe(false)
+    expect(isNorwegianPhoneNumber('+290 1234')).toBe(false)
+    expect(isNorwegianPhoneNumber('00290 1234')).toBe(false)
+
+    expect(isNorwegianPhoneNumber('112')).toBe(false) // too short
+    expect(isNorwegianPhoneNumber('4794099')).toBe(false) // too short
+    expect(isNorwegianPhoneNumber('479409911')).toBe(false) // too long
+
+    expect(isNorwegianPhoneNumber('+48 781 296 647')).toBe(false)
+    expect(isNorwegianPhoneNumber('0048 781-296-647')).toBe(false)
+    expect(isNorwegianPhoneNumber('+290 1234')).toBe(false)
+    expect(isNorwegianPhoneNumber('00290 1234')).toBe(false)
   })
 
   it('should pretty format international number', () => {

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -d",
-    "prepush": "npm run format:check && npm run test && (cd login-app && npm run prepush)",
-    "prepublishOnly": "npm run build",
+    "prepush": "npm run format:check && npm run test",
+    "prepublishOnly": "npm run test && npm run build",
     "format": "prettier --write './**/*.js'",
     "format:check": "prettier -l './**/*.js'",
     "test": "rm -f format*/*.js && jest",

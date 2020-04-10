@@ -1,6 +1,6 @@
 {
   "name": "norwegian-utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Utilities used in our Norwegian applications.",
   "main": "index.js",
   "scripts": {

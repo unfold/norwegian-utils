@@ -2,14 +2,14 @@ export const isValidPhoneNumber = (phoneNumber: string): boolean => {
   return !!(norwegianRegex(phoneNumber) || internationalRegex(phoneNumber))
 }
 
-export const shortFormatPhoneNumber = (phoneNumber: string): string | undefined => {
+export const shortFormatPhoneNumber = (phoneNumber: string): string => {
   const norwegianNumber = norwegianRegex(phoneNumber)
   if (norwegianNumber) return `+47${norwegianNumber.localPart}`
 
   const internationalNumber = internationalRegex(phoneNumber)
   if (internationalNumber) return `+${internationalNumber.internationalPart}`
 
-  return undefined
+  return phoneNumber
 }
 
 export const prettyFormatPhoneNumber = (phoneNumber: string): string => {

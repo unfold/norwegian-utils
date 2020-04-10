@@ -8,7 +8,7 @@
     "prepush": "npm run format:check && npm run test && (cd login-app && npm run prepush)",
     "format": "prettier --write './**/*.js'",
     "format:check": "prettier -l './**/*.js'",
-    "test": "rm **/*.js && jest",
+    "test": "rm -f format*/*.js && jest",
     "test:watch": "jest --watch"
   },
   "repository": {

@@ -6,10 +6,16 @@ This library returns hard spaces `\u00a0` for formatting, so there are no line b
 
 Format a norwegian business entity number ("brreg").
 
+Can also check if a number looks like a brreg number, but does not currently validate the checksum.
+
 ## Examples
 
     import { formatOrganizationNumber } from 'norwegian-utils/formatOrganizationNumber'
     formatOrganizationNumber('995222183') === '995 222 183'
+
+    import { isValidOrganizationNumber } from 'norwegian-utils/formatOrganizationNumber'
+    isValidOrganizationNumber('995222183') === true
+    isValidOrganizationNumber('99522218') === false
 
 # formatPhoneNumber
 
@@ -26,7 +32,6 @@ Provides 4 methods:
     shortFormatPhoneNumber('112') === '112'
     shortFormatPhoneNumber('12345678') === '+4712345678'
     shortFormatPhoneNumber('+44 12 34 56') === '+44123456'
-
 
     import { prettyFormatPhoneNumber } from 'norwegian-utils/formatPhoneNumber'
     prettyFormatPhoneNumber('12345678') === '12 34 56 78'

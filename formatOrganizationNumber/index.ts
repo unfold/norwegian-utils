@@ -9,4 +9,6 @@ export const formatOrganizationNumber = (orgNumber: string) => {
   return orgNumber.substring(0, 3) + '\u00a0' + orgNumber.substring(3, 6) + '\u00a0' + orgNumber.substring(6)
 }
 
-export default formatOrganizationNumber
+export const isValidOrganizationNumber = (orgNumber: string) => {
+  return !!/^\d{9}$/.test(orgNumber)
+}

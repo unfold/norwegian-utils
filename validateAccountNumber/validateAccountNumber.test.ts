@@ -5,6 +5,7 @@ describe('Account number validation', () => {
     expect(validateAccountNumber('1234.56.78903')).toBeTruthy()
     expect(validateAccountNumber('12345678903')).toBeTruthy()
     expect(validateAccountNumber('1234 56 78903')).toBeTruthy()
+    expect(validateAccountNumber('1234\u00a056\u00a078903')).toBeTruthy()
   })
 
   it('Should return false for account numbers with wrong control number', () => {
@@ -22,7 +23,7 @@ describe('Account number validation', () => {
     expect(validateAccountNumber('0')).toBeFalsy()
   })
 
-  it('Should return false for account numbers with letters and charachters other than spaces and periods', () => {
+  it('Should return false for account numbers with letters and characters other than spaces and periods', () => {
     expect(validateAccountNumber('1224aaa')).toBeFalsy()
     expect(validateAccountNumber('123456hello')).toBeFalsy()
     expect(validateAccountNumber('Kontonummer')).toBeFalsy()

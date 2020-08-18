@@ -55,7 +55,7 @@ const splitIntoGroups = (str: string): string => {
 const norwegianRegex = (phoneNumber: string): { localPart: string } | false => {
   phoneNumber = (phoneNumber + '').replace(/^\+/g, '00').replace(/\D/g, '')
 
-  // avoid matching 8-d;igits numbers like 00123456 or +123456
+  // avoid matching 8-digits numbers like 00123456 or +123456
   if (phoneNumber.match(/^00/) && !phoneNumber.match(/^0047/)) {
     return false
   }

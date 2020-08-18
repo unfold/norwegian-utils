@@ -56,9 +56,23 @@ Formats a Norwegian 11-digit bank account number on the standard form (4, 2, 5 d
 
 ## Examples
 
-    import { formatAccountNumber } from 'norwegian-utils/formatAccountNumber'
+    import formatAccountNumber from 'norwegian-utils/formatAccountNumber'
     formatAccountNumber('36242412345') === '3624 24 12345'
     formatAccountNumber('362424123451') === '3624 241 23451'
+
+# validateAccountNumber
+
+Validates norwegian account number to have 11 digits and checking the last control digit according to MOD11 algorithm.
+Accepts strings with spaces and dots, those are stripped before validation.
+Returns true if the number satisfies the constraints and false otherwise.
+
+## Examples
+
+    import validateAccountNumber from 'norwegian-utils/validateAccountNumber'
+    validateAccountNumber('1234.56.78903') //true
+    validateAccountNumber('1234.56.78909') //false
+    validateAccountNumber('1234 56 78903') //true
+    validateAccountNumber('123437q897e9w87qw89e75678903') //false
 
 # formatAmount
 

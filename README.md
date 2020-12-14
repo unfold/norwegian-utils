@@ -19,10 +19,11 @@ Can also check if a number looks like a brreg number, but does not currently val
 
 # formatPhoneNumber
 
-Provides 4 methods:
+Provides 5 methods:
 
 - `isValidPhoneNumber` - Is the phone number a valid phone number, somewhere in the world? Will be true for both `00123467890` style, `+46123467890`, or norwegian 8-digit numbers `12345678`. Phone number can can be passed with spaces etc. and will still pass. **This is not exhausitve validation**, invalid phone numbers can pass, and valid one be rejected (like the emergency number `112`).
 - `isNorwegianPhoneNumber` - Returns true if the number looks like a Norwegian number. Does not validate short / SMS numbers ie. `112` or `32200`.
+- `isNorwegianMobilePhoneNumber` - Returns true if the number looks like a Norwegian mobile phone number (9xxxxxxx or 4xxxxxxx). Second parameter `acceptM2M` can also enable validation for M2M mobile phones (58xxxxxxxxxx or 59xxxxxx) (default value for `acceptM2M` parameter is `false`)  
 - `shortFormatPhoneNumber` - Returns the phone number, with international prefix (so Norwegian 8-digit numbers are converted to the form +4712345678). This is appropriate to compare two phone numbers for example, or to store in databases. Removes any formatting like spaces, and always prefixes with `+`. If the format is invalid, this simply returns the original string.
 - `prettyFormatPhoneNumber` - Formats the phone number for output to the user, with spaces. Avoids `+47` prefix for Norwegian numbers. For example `004712345678` is formatted as `12 34 56 78`. Business numbers are formatted on the form `12 34 56 78`. Personal numbers are formatted as `423 45 678`. If the format is invalid, this simply returns the original string.
 

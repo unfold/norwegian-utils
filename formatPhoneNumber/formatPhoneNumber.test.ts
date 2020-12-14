@@ -142,6 +142,10 @@ describe('test phoneNumber module', () => {
     // M2M traffic - 8 digits
     expect(isNorwegianMobilePhoneNumber('+4759123456')).toBe(false)
     expect(isNorwegianMobilePhoneNumber('+4759123456', true)).toBe(true)
+
+    // M2M, but bad suffix
+    expect(isNorwegianMobilePhoneNumber('+47591234567890', true)).toBe(false) // 59xx should be 8-digits
+    expect(isNorwegianMobilePhoneNumber('+4758123456', true)).toBe(false) // 58xx should be 8-digits
   })
 
   it('should pretty format international number', () => {

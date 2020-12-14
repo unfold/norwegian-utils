@@ -1,4 +1,4 @@
-import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber, isNorwegianPhoneNumber } from './'
+import { shortFormatPhoneNumber, isValidPhoneNumber, prettyFormatPhoneNumber, isNorwegianPhoneNumber, isNorwegianMobilePhoneNumber } from './'
 
 describe('test phoneNumber module', () => {
   it('should validate phone numbers', () => {
@@ -102,11 +102,51 @@ describe('test phoneNumber module', () => {
     expect(isNorwegianPhoneNumber('112')).toBe(false) // too short
     expect(isNorwegianPhoneNumber('4794099')).toBe(false) // too short
     expect(isNorwegianPhoneNumber('479409911')).toBe(false) // too long
+    expect(isNorwegianPhoneNumber('47940997811')).toBe(false) // too long
+    expect(isNorwegianPhoneNumber('+47940997811')).toBe(false) // too long
 
     expect(isNorwegianPhoneNumber('+48 781 296 647')).toBe(false)
     expect(isNorwegianPhoneNumber('0048 781-296-647')).toBe(false)
     expect(isNorwegianPhoneNumber('+290 1234')).toBe(false)
     expect(isNorwegianPhoneNumber('00290 1234')).toBe(false)
+
+    // M2M traffic
+    expect(isNorwegianPhoneNumber('+47581234567890')).toBe(true)
+    expect(isNorwegianPhoneNumber('+47591234567890')).toBe(false) // M2M, but 59x
+  })
+
+  it('should validate norwegian mobile phone numbers', () => {
+    // valid mobile phones
+    expect(isNorwegianMobilePhoneNumber('94099781')).toBe(true)
+    expect(isNorwegianMobilePhoneNumber('+4794099781')).toBe(true)
+    expect(isNorwegianMobilePhoneNumber('44099781')).toBe(true)
+    expect(isNorwegianMobilePhoneNumber('+4744099781')).toBe(true)
+
+    // mobile, but not Norwegian
+    expect(isNorwegianMobilePhoneNumber('+48781296647')).toBe(false)
+    expect(isNorwegianMobilePhoneNumber('781296647')).toBe(false)
+
+    // not valid numbers
+    expect(isNorwegianMobilePhoneNumber('1234')).toBe(false)
+    expect(isNorwegianMobilePhoneNumber('+47940997811')).toBe(false)
+
+    // Norwegian, but not mobile
+    expect(isNorwegianPhoneNumber('22162935')).toBe(true)
+    expect(isNorwegianPhoneNumber('+4722162935')).toBe(true)
+    expect(isNorwegianMobilePhoneNumber('22162935')).toBe(false)
+    expect(isNorwegianMobilePhoneNumber('+4722162935')).toBe(false)
+
+    // M2M traffic - 12 digits
+    expect(isNorwegianMobilePhoneNumber('+47581234567890')).toBe(false)
+    expect(isNorwegianMobilePhoneNumber('+47581234567890', true)).toBe(true)
+
+    // M2M traffic - 8 digits
+    expect(isNorwegianMobilePhoneNumber('+4759123456')).toBe(false)
+    expect(isNorwegianMobilePhoneNumber('+4759123456', true)).toBe(true)
+
+    // M2M, but bad suffix
+    expect(isNorwegianMobilePhoneNumber('+47591234567890', true)).toBe(false) // 59xx should be 8-digits
+    expect(isNorwegianMobilePhoneNumber('+4758123456', true)).toBe(false) // 58xx should be 8-digits
   })
 
   it('should pretty format international number', () => {

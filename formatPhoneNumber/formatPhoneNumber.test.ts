@@ -112,6 +112,7 @@ describe('test phoneNumber module', () => {
 
     // M2M traffic
     expect(isNorwegianPhoneNumber('+47581234567890')).toBe(true)
+    expect(isNorwegianPhoneNumber('+47591234567890')).toBe(false) // M2M, but 59x
   })
 
   it('should validate norwegian mobile phone numbers', () => {

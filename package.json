@@ -7,8 +7,8 @@
     "build": "tsc -d",
     "prepush": "npm run format:check && npm run test",
     "prepublishOnly": "npm run test && npm run build",
-    "format": "prettier --write './**/*.js'",
-    "format:check": "prettier -l './**/*.js'",
+    "format": "prettier --write './**/*.(js|ts)'",
+    "format:check": "prettier -l './**/*.(js|ts)'",
     "test": "rm -f format*/*.js && jest",
     "test:watch": "jest --watch"
   },
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/jest": "24.0.19",
     "jest": "24.9.0",
+    "prettier": "2.2.1",
     "ts-jest": "24.1.0",
     "typescript": "3.7.2"
   }

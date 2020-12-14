@@ -3,7 +3,49 @@ export const isValidPhoneNumber = (phoneNumber: string): boolean => {
 }
 
 export const isNorwegianPhoneNumber = (phoneNumber: string): boolean => {
-  return shortFormatPhoneNumber(phoneNumber).indexOf('+47') === 0
+  const formattedPhoneNumber = shortFormatPhoneNumber(phoneNumber)
+
+  if (!formattedPhoneNumber.startsWith('+47')) {
+    return false
+  }
+
+  if (formattedPhoneNumber.length === 11) {
+    return true
+  }
+
+  // according to wikipedia https://en.wikipedia.org/wiki/Telephone_numbers_in_Norway
+  // mobile phone numbers can be also 12 digits
+  // 58 xx xx xx xx xx: Mobile numbers (M2M traffic)
+  if (formattedPhoneNumber.length === 15 && formattedPhoneNumber.startsWith('+4758')) {
+    return true
+  }
+
+  return false
+}
+
+export const isNorwegianMobilePhoneNumber = (phoneNumber: string, acceptM2M = false): boolean => {
+  const formattedPhoneNumber = shortFormatPhoneNumber(phoneNumber)
+
+  if (!isNorwegianPhoneNumber(formattedPhoneNumber)) {
+    return false
+  }
+
+  if (formattedPhoneNumber.length === 11 && (formattedPhoneNumber.startsWith('+474') || formattedPhoneNumber.startsWith('+479'))) {
+    return true
+  }
+
+  // https://en.wikipedia.org/wiki/Telephone_numbers_in_Norway#Mobile_numbers
+  if (acceptM2M) {
+    if (formattedPhoneNumber.length === 11 && formattedPhoneNumber.startsWith('+4759')) {
+      return true
+    }
+
+    if (formattedPhoneNumber.length === 15 && formattedPhoneNumber.startsWith('+4758')) {
+      return true
+    }
+  }
+
+  return false
 }
 
 export const shortFormatPhoneNumber = (phoneNumber: string): string => {

@@ -1,3 +1,6 @@
+const hasNorwegian =
+  Intl && Intl.NumberFormat && Intl.NumberFormat.supportedLocalesOf && Intl.NumberFormat.supportedLocalesOf(['nb-NO']).indexOf('nb-NO') !== -1
+
 export default (amount: number, options: { decimals?: boolean; alwaysNegative?: boolean } = {}) => {
   const fractionDigits = options.decimals === undefined || options.decimals === true ? 2 : 0
   if (options.alwaysNegative === true && Math.round(amount) !== 0) {
@@ -9,7 +12,9 @@ export default (amount: number, options: { decimals?: boolean; alwaysNegative?: 
   https://gitmemory.com/issue/formatjs/formatjs/3066/888110768
   */
 
-  return amount.toLocaleString('sv-SE', {
+  const localeString = hasNorwegian ? 'nb-NO' : 'sv-SE'
+
+  return amount.toLocaleString(localeString, {
     minimumFractionDigits: fractionDigits,
     maximumFractionDigits: fractionDigits,
   })
